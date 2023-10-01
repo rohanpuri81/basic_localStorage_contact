@@ -1,12 +1,18 @@
 import React from "react";
 
-function ContactList({ contacts, ind }) {
-  const contactList = contacts.map((val) => {
+function ContactList({ contacts, removeContact }) {
+  const contactList = contacts.map((val, ind) => {
     return (
       <div key={`${val.name}${ind}`} className="contacts">
         <div>{val.name}</div>
         <div className="email">{val.email}</div>
-        <span>Delete</span>
+        <span
+          onClick={() => {
+            removeContact(val.id);
+          }}
+        >
+          Delete
+        </span>
       </div>
     );
   });
